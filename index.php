@@ -1,6 +1,6 @@
 <?php
 include 'koneksi.php';
-$sql = "SELECT id_orang, nama, alamat, tgl_hutang, id_beras, id_minyak, total_harga, no_telp FROM orang";
+$sql = "SELECT id_orang, nama, alamat, tgl_hutang, id_beras, id_minyak, id_status, no_telp FROM orang";
 $query = mysqli_query($koneksi, $sql);
 
 function beras($idBeras, $koneksi){
@@ -14,6 +14,12 @@ function minyak($idMinyak, $koneksi){
 	$query = mysqli_query($koneksi, $sql);
 	$data = mysqli_fetch_assoc($query);
 	return $data['jenis_minyak'];
+}
+function status($idStatus, $koneksi){
+	$sql = "SELECT status FROM status WHERE id_status=$idStatus";
+	$query = mysqli_query($koneksi, $sql);
+	$data = mysqli_fetch_assoc($query);
+	return $data['status'];
 }
 /*var_dump($query);
 if ($query) {
@@ -63,7 +69,7 @@ if ($query) {
 					<?php echo minyak($data['id_minyak'],$koneksi);?>
 				</td>
 				<td>
-					<?php echo $data['total_harga'];?>
+					<?php echo $data['id_status'];?>
 				</td>
 				<td>
 					<?php echo $data['no_telp'];?>
