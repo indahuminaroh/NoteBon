@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 21, 2017 at 08:30 AM
+-- Generation Time: Nov 21, 2017 at 09:04 AM
 -- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -81,8 +81,10 @@ CREATE TABLE `orang` (
   `id_orang` int(1) NOT NULL,
   `nama` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_hutang` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_beras` int(12) NOT NULL,
   `id_minyak` int(12) NOT NULL,
+  `total_harga` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_telp` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -90,8 +92,8 @@ CREATE TABLE `orang` (
 -- Dumping data for table `orang`
 --
 
-INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `id_beras`, `id_minyak`, `no_telp`) VALUES
-(1, 'Sarminah', 'Jepara', 1, 1, 367448498);
+INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id_minyak`, `total_harga`, `no_telp`) VALUES
+(1, 'Sarminah', 'Jepara', '2017-11-21 01:59:00', 1, 1, '', 367448498);
 
 --
 -- Indexes for dumped tables
