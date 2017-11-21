@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 21, 2017 at 10:57 AM
+-- Generation Time: Nov 21, 2017 at 11:24 AM
 -- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -48,8 +48,7 @@ INSERT INTO `beras` (`id_beras`, `jenis_beras`, `harga/kg`) VALUES
 CREATE TABLE `harga` (
   `id_harga` int(1) NOT NULL,
   `total` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_beras` int(12) NOT NULL,
-  `id_minyak` int(12) NOT NULL
+  `keterangan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
