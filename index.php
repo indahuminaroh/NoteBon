@@ -1,14 +1,27 @@
 <?php
 include 'koneksi.php';
-$sql = "SELECT id_jenis, nama_orang, alamat, tgl_hutang, id_jenis, harga, no_telp FROM orang";
+$sql = "SELECT id_orang, nama, alamat, tgl_hutang, id_beras, id_minyak, total_harga, no_telp FROM orang";
 $query = mysqli_query($koneksi, $sql);
 
-function jenis($idJenis, $koneksi){
-	$sql = "SELECT jenis_barang FROM barang WHERE jenis_barang=$idJenis";
+function beras($idBeras, $koneksi){
+	$sql = "SELECT jenis_beras FROM beras WHERE id_beras=$idBeras";
 	$query = mysqli_query($koneksi, $sql);
 	$data = mysqli_fetch_assoc($query);
-	return $data['jenis_barang'];
+	return $data['jenis_beras'];
 }
+function minyak($idMinyak, $koneksi){
+	$sql = "SELECT jenis_minyak FROM minyak WHERE id_minyak=$idMinyak";
+	$query = mysqli_query($koneksi, $sql);
+	$data = mysqli_fetch_assoc($query);
+	return $data['jenis_minyak'];
+}
+/*var_dump($query);
+if ($query) {
+		echo "berhasi;";
+	}else {
+		echo "gagal";
+		echo mysqli_error($koneksi);
+	}*/
 
 ?>
 <!DOCTYPE html>
@@ -24,8 +37,9 @@ function jenis($idJenis, $koneksi){
 				<th>Nama</th>
 				<th>Alamat</th>
 				<th>Tgl Hutang</th>
-				<th>Jenis</th>
-				<th>Harga</th>
+				<th>Jenis Beras</th>
+				<th>Jenis Minyak</th>
+				<th>Total</th>
 				<th>No Telp</th>
 				<th>Aksi</th>
 			</tr>
@@ -34,7 +48,7 @@ function jenis($idJenis, $koneksi){
 	?>
 			<tr>
 				<td>
-					<?php echo $data['nama_orang'];?>
+					<?php echo $data['nama'];?>
 				</td>
 				<td>
 					<?php echo $data['alamat'];?>
@@ -43,17 +57,20 @@ function jenis($idJenis, $koneksi){
 					<?php echo $data['tgl_hutang'];?>
 				</td>
 				<td>
-					<?php echo jenis($data['id_jenis'],$koneksi);?>
+					<?php echo beras($data['id_beras'],$koneksi);?>
 				</td>
 				<td>
-					<?php echo $data['harga'];?>
+					<?php echo minyak($data['id_minyak'],$koneksi);?>
+				</td>
+				<td>
+					<?php echo $data['total_harga'];?>
 				</td>
 				<td>
 					<?php echo $data['no_telp'];?>
 				</td>
 				<td>
-					<a href="edit.php?id=<?php echo $data['id_barang'];?>">Edit</a>
-					<a href="hapus.php?id=<?php echo $data['id_barang'];?>">Hapus</a>
+					<a href="edit.php?id=<?php echo $data['id_orang'];?>">Edit</a>
+					<a href="hapus.php?id=<?php echo $data['id_orang'];?>">Hapus</a>
 				</td>
 			</tr>
 	<?php 
