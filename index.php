@@ -86,7 +86,7 @@ if ($query) {
 				</td>
 				<td>
 					<a href="edit.php?id=<?php echo $data['id_orang'];?>" class="btn btn-success">Edit</a>
-					<a href="hapus.php?id=<?php echo $data['id_orang'];?>" class="btn btn-danger" onclick="return confirm('Apakan anda yakin ingin menghapus?')">Hapus</a>
+					<a href="hapus.php?id=<?php echo $data['id_orang'];?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Hapus</a>
 				</td>
 			</tr>
 	<?php 
@@ -95,6 +95,6 @@ if ($query) {
 	</table>
 	</div>
 	</div>
-</div>
+	</div>
 </body>
 </html>
