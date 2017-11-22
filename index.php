@@ -41,7 +41,7 @@ if ($query) {
 <body>
 	<div class="container-fluid">
 	<div class="row">
-	<div class="col-sm-10">
+	<div class="col-sm-12">
 	<h1><u>Pencatatan Hutang</u></h1>
 	<table class="table table-striped">
 		<a href="input.php" class="btn btn-warning">Tambah Data</a>
@@ -86,7 +86,7 @@ if ($query) {
 				</td>
 				<td>
 					<a href="edit.php?id=<?php echo $data['id_orang'];?>" class="btn btn-success">Edit</a>
-					<a href="hapus.php?id=<?php echo $data['id_orang'];?>" class="btn btn-danger">Hapus</a>
+					<a href="hapus.php?id=<?php echo $data['id_orang'];?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus?')">Hapus</a>
 				</td>
 			</tr>
 	<?php 
@@ -95,6 +95,6 @@ if ($query) {
 	</table>
 	</div>
 	</div>
-</div>
+	</div>
 </body>
 </html>
