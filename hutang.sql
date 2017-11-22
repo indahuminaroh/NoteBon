@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Nov 21, 2017 at 11:24 AM
+-- Generation Time: Nov 22, 2017 at 11:15 AM
 -- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
 -- PHP Version: 7.0.22-0ubuntu0.16.04.1
 
@@ -42,18 +42,6 @@ INSERT INTO `beras` (`id_beras`, `jenis_beras`, `harga/kg`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `harga`
---
-
-CREATE TABLE `harga` (
-  `id_harga` int(1) NOT NULL,
-  `total` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `keterangan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `minyak`
 --
 
@@ -84,6 +72,7 @@ CREATE TABLE `orang` (
   `id_beras` int(12) NOT NULL,
   `id_minyak` int(12) NOT NULL,
   `total_harga` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_status` int(15) NOT NULL,
   `no_telp` int(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -91,8 +80,19 @@ CREATE TABLE `orang` (
 -- Dumping data for table `orang`
 --
 
-INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id_minyak`, `total_harga`, `no_telp`) VALUES
-(1, 'Sarminah', 'Jepara', '2017-11-21 01:59:00', 1, 1, '', 367448498);
+INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id_minyak`, `total_harga`, `id_status`, `no_telp`) VALUES
+(1, 'Sarminah', 'Jepara', '2017-11-21 01:59:00', 1, 1, '', 0, 367448498);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `status`
+--
+
+CREATE TABLE `status` (
+  `id_status` int(2) NOT NULL,
+  `status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Indexes for dumped tables
@@ -103,12 +103,6 @@ INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id
 --
 ALTER TABLE `beras`
   ADD PRIMARY KEY (`id_beras`);
-
---
--- Indexes for table `harga`
---
-ALTER TABLE `harga`
-  ADD PRIMARY KEY (`id_harga`);
 
 --
 -- Indexes for table `minyak`
@@ -123,6 +117,12 @@ ALTER TABLE `orang`
   ADD PRIMARY KEY (`id_orang`);
 
 --
+-- Indexes for table `status`
+--
+ALTER TABLE `status`
+  ADD PRIMARY KEY (`id_status`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -131,11 +131,6 @@ ALTER TABLE `orang`
 --
 ALTER TABLE `beras`
   MODIFY `id_beras` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `harga`
---
-ALTER TABLE `harga`
-  MODIFY `id_harga` int(1) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `minyak`
 --
@@ -146,6 +141,11 @@ ALTER TABLE `minyak`
 --
 ALTER TABLE `orang`
   MODIFY `id_orang` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `status`
+--
+ALTER TABLE `status`
+  MODIFY `id_status` int(2) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
