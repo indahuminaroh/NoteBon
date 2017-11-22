@@ -1,11 +1,26 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="refresh" content="3;url=index.php">
+	<title></title>
+</head>
+<body>
 
+
+<?php
 include "koneksi.php";
 
-$jenis_barang = $_GET['jenis_barang'];
+$id_orang = $_GET['id'];
 
-$sql =  "DELETE FROM barang WHERE $jenis_barang='jenis_barang'";
+$sql = "DELETE FROM orang WHERE id_orang='$id_orang'";
+$hutang = mysqli_query($koneksi, $sql);
 
-$hutang = mysqli_query($jenis_barang, $sql);
+if($hutang){
+	echo "Dihapus";
+}else{
+	echo "Tidak Dihapus";
+}
 
 ?>
+</body>
+</html>
