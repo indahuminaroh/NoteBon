@@ -1,6 +1,6 @@
 <?php
 include 'koneksi.php';
-$sql = "SELECT id_orang, nama, alamat, tgl_hutang, id_beras, id_minyak, id_status, no_telp FROM orang";
+$sql = "SELECT id_orang, nama, alamat, tgl_hutang, id_beras, id_minyak, total_harga, id_status, no_telp FROM orang";
 $query = mysqli_query($koneksi, $sql);
 
 function beras($idBeras, $koneksi){
@@ -34,11 +34,17 @@ if ($query) {
 <html>
 <head>
 	<title>NoteBon</title>
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="dist/style.css">
 </head>
 <body>
-	<table border="1px">
-		<label>Pencatatan Hutang</label><br />
-		<a href="input.php">Tambah Data</a>
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-sm-10">
+	<h1><u>Pencatatan Hutang</u></h1>
+	<table class="table table-striped">
+		<a href="input.php" class="btn btn-warning">Tambah Data</a>
 			<tr>
 				<th>Nama</th>
 				<th>Alamat</th>
@@ -46,6 +52,7 @@ if ($query) {
 				<th>Jenis Beras</th>
 				<th>Jenis Minyak</th>
 				<th>Total</th>
+				<th>Status</th>
 				<th>No Telp</th>
 				<th>Aksi</th>
 			</tr>
@@ -69,19 +76,25 @@ if ($query) {
 					<?php echo minyak($data['id_minyak'],$koneksi);?>
 				</td>
 				<td>
-					<?php echo $data['id_status'];?>
+					<?php echo $data['total_harga'];?>
+				</td>
+				<td>
+					<?php echo status($data['id_status'],$koneksi);?>
 				</td>
 				<td>
 					<?php echo $data['no_telp'];?>
 				</td>
 				<td>
-					<a href="edit.php?id=<?php echo $data['id_orang'];?>">Edit</a>
-					<a href="hapus.php?id=<?php echo $data['id_orang'];?>">Hapus</a>
+					<a href="edit.php?id=<?php echo $data['id_orang'];?>" class="btn btn-success">Edit</a>
+					<a href="hapus.php?id=<?php echo $data['id_orang'];?>" class="btn btn-danger">Hapus</a>
 				</td>
 			</tr>
 	<?php 
 		endforeach;
 	?>
 	</table>
+	</div>
+	</div>
+</div>
 </body>
 </html>

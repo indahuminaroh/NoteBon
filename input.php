@@ -5,11 +5,13 @@ if (isset($_POST['submit'])) {
 	$alamat = $_POST['alamat'];
 	$beras = $_POST['id_beras'];
 	$minyak = $_POST['id_minyak'];
-	$harga = $_POST['id_status'];
+	$harga = $_POST['total_harga'];
+	$status = $_POST['id_status'];
 	$telp = $_POST['no_telp'];
 
-$sql = "INSERT INTO orang(nama, alamat, id_beras, id_minyak, id_status, no_telp) VALUES ('$nama', '$alamat', '$beras', '$minyak', '$harga', '$telp')";
+$sql = "INSERT INTO orang(nama, alamat, id_beras, id_minyak, total_harga, id_status, no_telp) VALUES ('$nama', '$alamat', '$beras', '$minyak', '$harga', '$status', '$telp')";
 $query = mysqli_query($koneksi, $sql);
+header("location: index.php");
 
 /*var_dump($query);
 	if ($query) {
@@ -24,10 +26,16 @@ $query = mysqli_query($koneksi, $sql);
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="dist/style.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="dist/css/bootstrap.min.css">
 <head>
 <body>
-	<form method="POST">
-		<table>
+	<section>
+		<h2><u>Tambah Data</u></h2>
+		<div class="col-sm-2">
+		<form method="POST">
+		<table class="table table-stripped">
 			<tr>
 				<td><label>Nama:</label></td>
 				<td><input type="text" name="nama"></td>
@@ -60,11 +68,15 @@ $query = mysqli_query($koneksi, $sql);
 				</td>
 			</tr>
 			<tr>
-				<td><label>Harga:</label></td>
+				<td><label>Hutang</label></td>
+				<td><input type="text" name="total_harga"></td>
+			</tr>
+			<tr>
+				<td><label>Status:</label></td>
 				<td>
 					<select name="id_status">
-						<option value="Lunas">Lunas</option>
-						<option value="Belum Lunas">Belum Lunas</option>
+						<option value="1">Lunas</option>
+						<option value="2">Belum Lunas</option>
 					</select>
 				</td>
 			</tr>
@@ -73,9 +85,20 @@ $query = mysqli_query($koneksi, $sql);
 				<td><input type="text" name="no_telp"><br/></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="submit" value="Simpan"></td>
+				<td colspan="2"><input type="submit" name="submit" value="Simpan" class="btn btn-info"></td>
 			</tr>
 		</table>
 	</form>
+</div>
+</div>
+</section>
+<aside>
+	<h3><u>Ketentuan dan Syarat Hutang</u></h3>
+			<p>
+			1. Nama Pelanggan harus jelas.<br/>
+			2. Harus meninggalkan alamat rumah dan no_telp.<br/>
+			3. Harus membayar hutang.
+			</p>
+</aside>
 </body>
 </html>

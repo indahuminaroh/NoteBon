@@ -1,0 +1,17 @@
+* {
+	margin-top: 2%;
+}
+.table th {
+	background-color: pink !important;
+}
+th, td {
+	font-size: 20px;
+}
+section {
+	float: left;
+	margin-left: 15%;
+}
+aside {
+	float: right;
+	margin-right: 20%;
+}
