@@ -21,6 +21,24 @@ $sql = "SELECT nama, alamat, tgl_hutang, id_beras, id_minyak, total_harga, id_st
 $query = mysqli_query($koneksi, $sql);
 $hasil = mysqli_fetch_assoc($query);
 
+function beras($idBeras, $koneksi){
+	$sql = "SELECT jenis_beras FROM beras WHERE id_beras=$idBeras";
+	$query = mysqli_query($koneksi, $sql);
+	$hasil = mysqli_fetch_assoc($query);
+	return $hasil['jenis_beras'];
+}
+function minyak($idMinyak, $koneksi){
+	$sql = "SELECT jenis_minyak FROM minyak WHERE id_minyak=$idMinyak";
+	$query = mysqli_query($koneksi, $sql);
+	$hasil = mysqli_fetch_assoc($query);
+	return $hasil['jenis_minyak'];
+}
+function status($idStatus, $koneksi){
+	$sql = "SELECT status FROM status WHERE id_status=$idStatus";
+	$query = mysqli_query($koneksi, $sql);
+	$hasil = mysqli_fetch_assoc($query);
+	return $hasil['status'];
+}
 /*var_dump($query);
     if ($query) {
         echo "Berhasil";
@@ -53,7 +71,10 @@ $hasil = mysqli_fetch_assoc($query);
         </tr>
         <tr>
             <td><label>Jenis Beras :</label></td>
-            <td><select name="id_beras" value="<?php echo $hasil['id_beras'] ?>">
+            <td><select name="id_beras" >
+            	<option value="<?php echo $hasil['id_beras'] ?>">
+            		<?php echo beras($hasil['id_beras'],$koneksi);?>
+            	</option>
                     <option value="1" >Murni</option>
                     <option value="2">Sembako</option>
                     <option value="3">Wangi</option>
@@ -63,7 +84,10 @@ $hasil = mysqli_fetch_assoc($query);
         </tr>
         <tr>
             <td><label>Jenis Minyak :</label></td>
-            <td><select name="id_minyak" value="<?php echo $hasil['id_minyak'] ?>">
+            <td><select name="id_minyak">
+            	<option value="<?php echo $hasil['id_minyak'] ?>">
+            		<?php echo minyak($hasil['id_minyak'],$koneksi);?>
+            	</option>
                     <option value="1">Bimoli</option>
                     <option value="2">Hemat</option>
                     <option value="3">Fortune</option>
@@ -76,7 +100,9 @@ $hasil = mysqli_fetch_assoc($query);
         </tr>
         <tr>
             <td><label>Status :</label></td>
-            <td><select name="id_status" value="<?php echo $hasil['id_status'] ?>">
+            <td><select name="id_status">
+            <option value="<?php echo $hasil['id_status'] ?>">
+            	<?php echo status($hasil['id_status'],$koneksi);?>
                     <option value="1">Lunas</option>
                     <option value="2">Belum Lunas</option>
                 </select></td>
