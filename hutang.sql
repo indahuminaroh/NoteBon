@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Nov 22, 2017 at 01:27 PM
+-- Host: localhost
+-- Generation Time: Nov 23, 2017 at 03:33 PM
 -- Server version: 10.0.31-MariaDB-0ubuntu0.16.04.2
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- PHP Version: 7.1.11-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,7 +37,11 @@ CREATE TABLE `beras` (
 --
 
 INSERT INTO `beras` (`id_beras`, `jenis_beras`, `harga/kg`) VALUES
-(1, 'A', 'Rp 10.000');
+(1, 'Murni', 'Rp 10.000'),
+(2, 'Sembako', 'Rp 9.500'),
+(3, 'Wangi', 'Rp 12.000'),
+(4, 'Merah', 'Rp 17.000'),
+(5, '-', '-');
 
 -- --------------------------------------------------------
 
@@ -56,7 +60,10 @@ CREATE TABLE `minyak` (
 --
 
 INSERT INTO `minyak` (`id_minyak`, `jenis_minyak`, `harga/liter`) VALUES
-(1, 'A', 'Rp 13.000');
+(1, 'Bimoli', 'Rp 13.000'),
+(2, 'Hemat', 'Rp 10.000'),
+(3, 'Fortune', 'Rp 15.000'),
+(4, '-', '-');
 
 -- --------------------------------------------------------
 
@@ -81,8 +88,11 @@ CREATE TABLE `orang` (
 --
 
 INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id_minyak`, `total_harga`, `id_status`, `no_telp`) VALUES
-(1, 'Sarminah', 'Jepara', '2017-11-21 01:59:00', 1, 1, '', 0, 367448498),
-(2, 'sfbvcz', 'nbvcxz', '2017-11-22 04:24:37', 1, 1, '', 0, 9887);
+(0, 'Binti Qomariah', 'Sidodadi', '2017-11-23 04:59:18', 2, 2, '12.0000', 2, 1),
+(46, 'Indah Uminaroh', 'Dimana aja boleh', '2017-11-23 05:00:40', 2, 1, '50000', 1, 65),
+(48, 'aku', 'Murong', '2017-11-23 07:46:41', 2, 1, '123', 2, 0),
+(49, 'Indah Uminaroh', 'Bajulan', '2017-11-23 07:46:58', 4, 3, '21', 1, 76),
+(50, 'Tata', 'Mana aja', '2017-11-23 03:55:19', 4, 3, '50000', 2, 22);
 
 -- --------------------------------------------------------
 
@@ -91,9 +101,17 @@ INSERT INTO `orang` (`id_orang`, `nama`, `alamat`, `tgl_hutang`, `id_beras`, `id
 --
 
 CREATE TABLE `status` (
-  `id_status` int(2) NOT NULL,
+  `id_status` int(1) NOT NULL,
   `status` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `status`
+--
+
+INSERT INTO `status` (`id_status`, `status`) VALUES
+(1, 'Lunas'),
+(2, 'Belum Lunas');
 
 --
 -- Indexes for dumped tables
@@ -131,22 +149,22 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `beras`
 --
 ALTER TABLE `beras`
-  MODIFY `id_beras` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_beras` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `minyak`
 --
 ALTER TABLE `minyak`
-  MODIFY `id_minyak` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_minyak` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `orang`
 --
 ALTER TABLE `orang`
-  MODIFY `id_orang` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_orang` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `status`
 --
 ALTER TABLE `status`
-  MODIFY `id_status` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_status` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
