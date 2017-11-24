@@ -113,7 +113,7 @@ if ($query) {
           </ul>
         </div>-->
         <div class="container-fluid">
-        <div class="col-sm-10">
+        <div class="col-sm-12">
           <!--<h1 class="page-header">Dashboard</h1>
 
           <div class="row placeholders">
