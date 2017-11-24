@@ -4,7 +4,7 @@ include 'koneksi.php';
 $user = $_POST['user'];
 $pass = $_POST['pass'];
 
-$sql = "SELECT * FROM user WHERE user='$user'";
+$sql = "SELECT * FROM admin WHERE user='$user'";
 $query = mysqli_query($koneksi, $sql);
 $hasil = mysqli_fetch_assoc($query);
 
