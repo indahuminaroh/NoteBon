@@ -14,9 +14,12 @@ Langkah admin:
 ->alamat
 ->no_telpon
 ->jenis beras
-->jenis minyak 
+->jenis minyak
+->lunas/belum lunas 
 ->total harga
-Lalu, data yang dimasukkan akan ditampilkan. Bila si pelanggan yang menghutang sudah melunasi hutang nya, si admin tinggal menghapus catatan/data yang dimasukkan. Bila si penghutang mencicil, admin tinggal megeditnya.
+Lalu, data dikirim kan. Sehingga dapat tampil di daftar hutang. 
+Apabila si pelanggan yang menghutang, ingin mencicil. Si admin bisa mengedit nya.
+Apabila ingin melunasi, admin tinggal mengganti status penghutang. 
 
 Kelemahan:
 Masih terbatas pada barangnya yang tersedia untuk dihutang. Yakni beras dan minyak.
